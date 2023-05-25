@@ -3,23 +3,21 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class QUOTEREADER {
 
     // static field - key:value data structure
-    public static HashMap<String, String> quotes = new HashMap<>();
+    public static TreeMap<String, String> quotes = new TreeMap<>();
 
 
 
     // reads data from file and fills appropriate data structure
 
     public static void readDataFromFile(String filePath)  {
-        filePath = "src/quotes.txt";
-
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
             while (line != null) {
                 String[] quote = line.split(": ");
@@ -59,15 +57,15 @@ public class QUOTEREADER {
     }
 
     // getters for static field
-    public static HashMap<String, String> getQuotes() {
-        return (HashMap<String, String>) quotes;
+    public static TreeMap<String, String> getQuotes() {
+        return quotes;
     }
 
 
     // list all quotes
     public static void listAllQuotes(){
         for (Map.Entry<String, String> entry : quotes.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
     }
